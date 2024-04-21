@@ -5,14 +5,15 @@ import { ChevronsLeft, MenuIcon } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import React, { ElementRef, useEffect, useRef, useState } from 'react'
 import { useMediaQuery } from 'usehooks-ts'
+import UserItem from './UserItem'
 
 const Navigation = () => {
     const pathname = usePathname()
     const isMobile = useMediaQuery("(max-width:768px)");
-
     const isResizingRef = useRef(false)
     const sidebarRef = useRef<ElementRef<"aside">>(null)
     const navbarRef = useRef<ElementRef<"div">>(null)
+
     const [isResetting, setIsResetting] = useState(false)
     const [isCollapsed, setIsCollapsed] = useState(isMobile)
 
@@ -105,7 +106,7 @@ const Navigation = () => {
                 </div>
 
                 <div className="">
-                    <p>Action Items</p>
+                    <UserItem />
                 </div>
                 <div className="mt-4">
                     <p>Documents</p>

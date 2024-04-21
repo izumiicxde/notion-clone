@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/provider/ThemeProvider";
 import { ConvexClientProvider } from "@/components/provider/ConvexProvider";
+import { Toaster } from "sonner";
 
 const roboto = Roboto({ subsets: ["latin"], weight: "400" });
 
@@ -42,6 +43,7 @@ export default function RootLayout({
             disableTransitionOnChange
             storageKey="ishiki-theme"
           >
+            <Toaster position="bottom-center" />
             <main>
               {children}
             </main>
