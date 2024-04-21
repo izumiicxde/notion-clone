@@ -1,11 +1,16 @@
 "use client"
 
 import { cn } from '@/lib/utils'
-import { ChevronsLeft, MenuIcon } from 'lucide-react'
+import { ChevronsLeft, MenuIcon, PlusCircle, Search, Settings } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import React, { ElementRef, useEffect, useRef, useState } from 'react'
 import { useMediaQuery } from 'usehooks-ts'
 import UserItem from './UserItem'
+import { Item } from './Item'
+import { useMutation } from 'convex/react'
+import { api } from '@/convex/_generated/api'
+import { toast } from 'sonner'
+import { DocumentList } from './DocumentList'
 
 const Navigation = () => {
     const pathname = usePathname()
@@ -17,6 +22,7 @@ const Navigation = () => {
     const [isResetting, setIsResetting] = useState(false)
     const [isCollapsed, setIsCollapsed] = useState(isMobile)
 
+    const create = useMutation(api.documents.create)
 
     useEffect(() => {
         if (isMobile) collapse()
@@ -83,8 +89,18 @@ const Navigation = () => {
         }
     }
 
+    const handleCreate = () => {
+        const promise = create({ title: "Untitled" })
+
+        toast.promise(promise, {
+            loading: "Planet creation in progress",
+            success: "Planet created.",
+            error: "Failed.Planet exploded!"
+        })
+    }
+
     return (
-        <>
+        <div className='select-none'>
             <aside
                 ref={sidebarRef}
                 className={cn(
@@ -107,9 +123,12 @@ const Navigation = () => {
 
                 <div className="">
                     <UserItem />
+                    <Item onClick={() => { }} isSearch label="Search" icon={Search} />
+                    <Item onClick={() => { }} label="Settings" icon={Settings} />
+                    <Item onClick={handleCreate} label="New planet" icon={PlusCircle} />
                 </div>
                 <div className="mt-4">
-                    <p>Documents</p>
+                    <DocumentList />
                 </div>
                 <div
                     onMouseDown={handleMouseDown}
@@ -124,7 +143,7 @@ const Navigation = () => {
                     {isCollapsed && <MenuIcon className='h-6 w-6 text-muted-foreground' role='button' onClick={resetWidth} />}
                 </nav>
             </div>
-        </>
+        </div>
     )
 }
 
