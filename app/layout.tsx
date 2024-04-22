@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import "./globals.css";
+import { Toaster } from "sonner";
+
+// PROVIDERS
 import { ThemeProvider } from "@/components/provider/ThemeProvider";
 import { ConvexClientProvider } from "@/components/provider/ConvexProvider";
-import { Toaster } from "sonner";
+import { ModalProvider } from "@/components/provider/ModalProvider";
+
+import "./globals.css";
 
 const roboto = Roboto({ subsets: ["latin"], weight: "400" });
 
@@ -44,6 +48,7 @@ export default function RootLayout({
             storageKey="ishiki-theme"
           >
             <Toaster position="bottom-center" />
+            <ModalProvider />
             <main>
               {children}
             </main>

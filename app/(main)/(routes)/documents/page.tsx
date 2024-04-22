@@ -25,7 +25,7 @@ export default function Documents() {
     }
 
     return (
-        <div className='h-screen flex flex-col items-center justify-center space-y-4 '>
+        <div className='h-screen flex flex-col items-center justify-center space-y-4 select-none'>
             <Image src={"/empty.png"} height={300} width={300} alt="empty" className="dark:hidden" />
             <Image src={"/empty-dark.png"} height={300} width={300} alt="empty" className="dark:block hidden" />
             <h2 className="text-lg font-bold">

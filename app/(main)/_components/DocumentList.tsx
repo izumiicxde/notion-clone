@@ -53,8 +53,8 @@ export const DocumentList = ({
     return (
         <>
             <p
-                style={{ paddingLeft: level ? `${(level * 12) + 29}px` : undefined }}
-                className={cn("hidden text-xs font-medium text-muted-foreground/80",
+                style={{ paddingLeft: level ? `${(level * 12) + 31}px` : undefined }}
+                className={cn("hidden text-sm font-bold p-2 text-muted-foreground/80",
                     expanded && "last:block",
                     level === 0 && "hidden"
                 )}
