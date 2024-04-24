@@ -116,7 +116,7 @@ const Navigation = () => {
     }
 
     return (
-        <div className='select-none'>
+        <div className='select-none relative'>
             <aside
                 ref={sidebarRef}
                 className={cn(

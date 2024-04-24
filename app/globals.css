@@ -7,6 +7,12 @@ body,
 :root {
   height: 100%;
 }
+.bn-editor,
+.bn-container,
+.bn-block,
+.bn-inline-content {
+  @apply dark:bg-transparent;
+}
 
 @layer base {
   :root {
