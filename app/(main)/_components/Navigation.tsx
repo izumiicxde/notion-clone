@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import { ChevronsLeft, MenuIcon, Plus, PlusCircle, Search, Settings, Trash } from 'lucide-react'
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover"
 
-import { useParams, usePathname } from 'next/navigation'
+import { useParams, usePathname, useRouter } from 'next/navigation'
 import React, { ElementRef, useEffect, useRef, useState } from 'react'
 import { useMediaQuery } from 'usehooks-ts'
 import UserItem from './UserItem'
@@ -29,6 +29,8 @@ const Navigation = () => {
     const isResizingRef = useRef(false)
     const sidebarRef = useRef<ElementRef<"aside">>(null)
     const navbarRef = useRef<ElementRef<"div">>(null)
+
+    const router = useRouter()
 
     const [isResetting, setIsResetting] = useState(false)
     const [isCollapsed, setIsCollapsed] = useState(isMobile)
@@ -101,7 +103,10 @@ const Navigation = () => {
     }
 
     const handleCreate = () => {
-        const promise = create({ title: "untitled planet" })
+        const promise = create({ title: "untitled planet" }).then((docId) => {
+            router.push(`/documents/${docId}`)
+        })
+
 
         toast.promise(promise, {
             loading: "Planet creation in progress",

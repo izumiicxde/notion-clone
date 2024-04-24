@@ -8,14 +8,18 @@ import Image from "next/image"
 import { useMutation } from "convex/react"
 import { api } from "@/convex/_generated/api"
 import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 
 
 export default function Documents() {
+    const router = useRouter()
     const { user } = useUser()
     const create = useMutation(api.documents.create)
 
     const onCreate = () => {
-        const promise = create({ title: "untitled planet" })
+        const promise = create({ title: "untitled planet" }).then((docId) => {
+            router.push(`/documents/${docId}`)
+        })
 
         toast.promise(promise, {
             loading: "Creating a new planet..",

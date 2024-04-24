@@ -15,7 +15,7 @@ interface EditorProps {
     editable?: boolean
 }
 
-export const Editor = ({
+const Editor = ({
     onChange, initialContent, editable
 }: EditorProps) => {
 
@@ -51,6 +51,4 @@ export const Editor = ({
 }
 
 
-//  {
-// initialContent: initialContent ? JSON.parse(initialContent) as PartialBlock : undefined
-// }
+export default Editor
