@@ -6,6 +6,7 @@ import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/provider/ThemeProvider";
 import { ConvexClientProvider } from "@/components/provider/ConvexProvider";
 import { ModalProvider } from "@/components/provider/ModalProvider";
+import { EdgeStoreProvider } from '../lib/edgestore';
 
 import "./globals.css";
 
@@ -40,19 +41,21 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={roboto.className}>
         <ConvexClientProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-            storageKey="ishiki-theme"
-          >
-            <Toaster position="bottom-center" />
-            <ModalProvider />
-            <main>
-              {children}
-            </main>
-          </ThemeProvider>
+          <EdgeStoreProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+              storageKey="ishiki-theme"
+            >
+              <Toaster position="bottom-center" />
+              <ModalProvider />
+              <main>
+                {children}
+              </main>
+            </ThemeProvider>
+          </EdgeStoreProvider>
         </ConvexClientProvider>
       </body>
     </html>
