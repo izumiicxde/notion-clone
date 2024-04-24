@@ -26,7 +26,7 @@ const ConfirmModal = ({ children, onConfirm }: ConfirmModalProps) => {
                         You sure want to nuke moon?
                     </AlertDialogTitle>
                     <AlertDialogDescription>
-                        This can't be undone
+                        This can&apos;t be undone
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
