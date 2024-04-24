@@ -116,7 +116,7 @@ const Navigation = () => {
     }
 
     return (
-        <div className='select-none relative'>
+        <div className='select-none h-full dark:bg-[#1f1f1f]'>
             <aside
                 ref={sidebarRef}
                 className={cn(
@@ -183,7 +183,7 @@ const Navigation = () => {
                     />
                 ) : (
                     <nav className='bg-transparent px-3 py-2 w-full'>
-                        {isCollapsed && <MenuIcon className='h-6 w-6 text-muted-foreground' role='button' onClick={resetWidth} />}
+                        {isCollapsed && <MenuIcon className='h-6 w-6 text-muted-foreground bg-red-500' role='button' onClick={resetWidth} />}
                     </nav>
                 )}
             </div>
